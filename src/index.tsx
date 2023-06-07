@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import 'tachyons'
 import GuestHome from './pages/GuestHome';
+import UserHome from './pages/UserHome';
+import AdminHome from './pages/AdminHome';
 
 
 const root = ReactDOM.createRoot(
@@ -11,7 +13,6 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    {/* <App /> */}
-    <GuestHome />
+    <AdminHome />
   </React.StrictMode>
 );

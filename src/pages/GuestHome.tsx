@@ -5,9 +5,10 @@ import SearchQuery from "../components/Shared/SearchQuery";
 import Availability from '../components/Shared/Availability';
 import WhoAmI from "../components/Shared/WhoAmI";
 
-const GuestHome = () => {
+function GuestHome () {
+  return (
     <div>
-      <div className="container mx-auto bg-gray-200 rounded-xl shadow border p-8 m-10">
+      <div className="container md:mx-auto bg-gray-200 rounded-xl shadow border p-8 m-10">
         <WhoAmI />
         <div className="tc">
           <h1 className="col-start-1 row-start-2 mt-4 max-w text-4xl font-extrabold tracking-tight text-slate-900 sm:text-7xl xl:max-w">
@@ -22,6 +23,7 @@ const GuestHome = () => {
         <Availability />
       </div>
     </div>
+  );
 };
 
 export default GuestHome;
