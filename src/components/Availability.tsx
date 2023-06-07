@@ -1,5 +1,6 @@
-// Reuse from UserView?
-const OrderColumn = () => {
+import React from "react";
+
+const Availability = () => {
     return (
         <div>
         <ul className="tc">
@@ -10,4 +11,4 @@ const OrderColumn = () => {
     );
 };
 
-export default OrderColumn;
+export default Availability;
