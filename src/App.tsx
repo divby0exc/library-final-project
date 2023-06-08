@@ -1,9 +1,12 @@
-import React from "react";
-import OrderColumn from "./components/Shared/OrderColumn";
-import GuestHome from "./pages/GuestHome";
+import React, { useState } from "react";
+import DeleteConfirmation from "./components/AdminComponents/DeleteModal";
+import AdminHome from "./pages/AdminHome";
+import DeleteModal from "./components/AdminComponents/DeleteModal";
 
 const App = () => {
-  
+return(
+  <DeleteModal />
+);
 };
 
 export default App;

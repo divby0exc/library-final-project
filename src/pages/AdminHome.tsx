@@ -6,12 +6,8 @@ import WhoAmI from "../components/Shared/WhoAmI";
 import OrderColumn from "../components/Shared/OrderColumn";
 import ActionColumn from "../components/AdminComponents/ActionColumn";
 import AddButton from "../components/AdminComponents/AddButton";
-import React, { useState } from 'react';
-import DeleteConfirmation from "../components/AdminComponents/DeleteConfirmation";
 
 const AdminHome = () => {
-    const [isOverlayOpen, setIsOverlayOpen] = useState(false);
-
   return (
     <div>
       <div className="container md:mx-auto bg-gray-200 rounded-xl shadow border p-8 m-10">

@@ -6,6 +6,7 @@ import 'tachyons'
 import GuestHome from './pages/GuestHome';
 import UserHome from './pages/UserHome';
 import AdminHome from './pages/AdminHome';
+import DeleteModal from './components/AdminComponents/DeleteModal';
 
 
 const root = ReactDOM.createRoot(
@@ -13,6 +14,6 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <AdminHome />
+    <DeleteModal />
   </React.StrictMode>
 );

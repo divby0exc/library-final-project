@@ -5,7 +5,7 @@ const SearchUsername = () => {
         <div className="flex justify-center">
         <input
           type="text"
-          placeholder="Search query..."
+          placeholder="Search username..."
           className="rounded-xl shadow border p-4"
         />
       </div>
