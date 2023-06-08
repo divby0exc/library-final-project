@@ -1,7 +1,7 @@
 const ActionColumn = () => {
   return (
     <div>
-      <ul className="tc">
+      <ul className="flex flex-col items-center">
         <p className="border bg-gray-200 text-4xl font-extrabold p-7 m-4">
           Action
         </p>
