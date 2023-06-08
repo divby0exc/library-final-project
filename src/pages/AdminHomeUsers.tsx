@@ -4,7 +4,7 @@ import SearchQuery from "../components/Shared/SearchQuery";
 import Availability from "../components/Shared/Availability";
 import WhoAmI from "../components/Shared/WhoAmI";
 import OrderColumn from "../components/Shared/OrderColumn";
-import ActionColumn from "../components/AdminComponents/ActionColumn";
+import UsersActionColumn from '../components/AdminComponents/UsersActionColumn';
 import AddButton from "../components/AdminComponents/AddButton";
 
 const AdminHome = () => {
@@ -35,7 +35,7 @@ const AdminHome = () => {
         <BookAuthor />
         <Availability />
         <OrderColumn />
-        <ActionColumn />
+        <UsersActionColumn />
       </div>
     </div>
   );

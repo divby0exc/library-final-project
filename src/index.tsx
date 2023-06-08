@@ -5,8 +5,14 @@ import App from './App';
 import 'tachyons'
 import GuestHome from './pages/GuestHome';
 import UserHome from './pages/UserHome';
-import AdminHome from './pages/AdminHome';
-import DeleteModal from './components/AdminComponents/DeleteModal';
+import AdminHome from './pages/AdminHomeBooks';
+
+import Login from './pages/Login';
+import Register from './pages/Register';
+
+import AdminHomeUsers from './pages/AdminHomeUsers';
+import EditModelForm from './components/AdminComponents/EditModelForm';
+import AdminHomeBooks from './pages/AdminHomeBooks';
 
 
 const root = ReactDOM.createRoot(
@@ -14,6 +20,6 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <AdminHome />
+    <AdminHomeBooks />
   </React.StrictMode>
 );
