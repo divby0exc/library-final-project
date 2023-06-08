@@ -6,6 +6,7 @@ import WhoAmI from "../components/Shared/WhoAmI";
 import OrderColumn from "../components/Shared/OrderColumn";
 import UsersActionColumn from '../components/AdminComponents/UsersActionColumn';
 import AddButton from "../components/AdminComponents/AddButton";
+import SearchUsername from "../components/AdminComponents/SearchUsername";
 
 const AdminHome = () => {
   return (
@@ -19,7 +20,7 @@ const AdminHome = () => {
         </div>
       </div>
       <div className="container mx-auto flex justify-around gap-2">
-        <SearchQuery />
+        <SearchUsername />
         <AddButton />
       </div>
       <div className="container mx-auto flex justify-end gap-2 mt-2">

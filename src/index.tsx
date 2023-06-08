@@ -20,6 +20,6 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <AdminHomeBooks />
+    <AdminHomeUsers />
   </React.StrictMode>
 );
