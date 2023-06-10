@@ -1,14 +1,14 @@
-import BookTitle from "../components/Shared/BookTitle";
-import BookAuthor from "../components/Shared/BookAuthor";
-import SearchQuery from "../components/Shared/SearchQuery";
-import Availability from "../components/Shared/Availability";
 import WhoAmI from "../components/Shared/WhoAmI";
-import OrderColumn from "../components/Shared/OrderColumn";
-import UsersActionColumn from '../components/AdminComponents/UsersActionColumn';
-import AddButton from "../components/AdminComponents/AddButton";
-import SearchUsername from "../components/AdminComponents/SearchUsername";
+import SearchUsername from "../components/AdminComponents/UsersView/SearchUsername";
+import ActionCol from "../components/AdminComponents/UsersView/ActionCol";
+import PurchasesCol from "../components/AdminComponents/UsersView/PurchasesCol";
+import Username from "../components/AdminComponents/UsersView/UsernameCol";
+import Role from "../components/AdminComponents/UsersView/RoleCol";
+import { useState } from "react";
 
 const AdminHome = () => {
+  const [view, setView] = useState(false);
+
   return (
     <div>
       <div className="container md:mx-auto bg-gray-200 rounded-xl shadow border p-8 m-10">
@@ -31,11 +31,10 @@ const AdminHome = () => {
         </button>
       </div>
       <div className="container mx-auto bg-gray-200 rounded-xl shadow border p-8 m-10 flex flex-row justify-around">
-        <BookTitle />
-        <BookAuthor />
-        <Availability />
-        <OrderColumn />
-        <UsersActionColumn />
+        <Username />
+        <Role />
+        <PurchasesCol />
+        <ActionCol />
       </div>
     </div>
   );
