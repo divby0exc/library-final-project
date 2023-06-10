@@ -43,7 +43,11 @@ const ActionCol = () => {
               </div>
               {/* Footer */}
               <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-                <button className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+              <button className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                onClick={() => setShowPromoteModal(false)}>
+                  Confirm
+                </button>
+                <button className="text-green-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                 onClick={() => setShowPromoteModal(false)}>
                   Abort
                 </button>

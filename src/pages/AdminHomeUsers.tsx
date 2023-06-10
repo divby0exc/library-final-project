@@ -5,6 +5,7 @@ import PurchasesCol from "../components/AdminComponents/UsersView/PurchasesCol";
 import Username from "../components/AdminComponents/UsersView/UsernameCol";
 import Role from "../components/AdminComponents/UsersView/RoleCol";
 import { useState } from "react";
+import AdminHomeBooks from "./AdminHomeBooks";
 
 const AdminHome = () => {
   const [view, setView] = useState(false);
@@ -23,9 +24,14 @@ const AdminHome = () => {
         <SearchUsername />
       </div>
       <div className="container mx-auto flex justify-end gap-2 mt-2">
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <button onClick={() => setView(true)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
           Books
         </button>
+        {view ? (
+          <>
+          return <AdminHomeBooks />
+          </>
+        ) : null}
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
           Username
         </button>
