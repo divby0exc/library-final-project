@@ -1,10 +1,14 @@
-import React, { useState } from "react";
-import AdminHome from "./pages/AdminHomeBooks";
+import AuthProvider from "./components/Provider/AuthProvider";
+import Routes from "./components/Routes/Routes";
+import Login from "./pages/Login";
 
 const App = () => {
-// return(
-  
-// );
+    return (
+        <AuthProvider>
+            <Routes />
+        </AuthProvider>
+    )
+
 };
 
 export default App;

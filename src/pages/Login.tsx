@@ -1,30 +1,45 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import axios from 'axios';
-import { Http2ServerResponse } from "http2";
-
+import axios from "axios";
+import { useAuth } from "../components/Provider/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 interface FormData {
-    username: string
-    password: string
+  username: string;
+  password: string;
 }
 
 const Login = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<FormData>({ mode: "onChange" });
-    const [name, setName] = useState("");
+  const { setToken } = useAuth();
+  const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({ mode: "onChange" });
+  const [name, setName] = useState("");
 
-    const onSubmit = handleSubmit(( { username, password }) => {
-        const user = {
-          username: username, 
-          password: password
-        }
-      
-      axios.post('http://localhost:8080/auth/login', user)
-      .then(res => console.log(res.status, res.data.accessToken));
-    });
+  const onSubmit = handleSubmit(({ username, password }) => {
+    const user = {
+      username: username,
+      password: password,
+    };
 
-    return (
-        <div className="min-h-screen bg-gray-50 flex flex-col justify-center">
+    axios
+      .post("http://localhost:8080/auth/login", user)
+      .then((res) => setToken(res.data.accessToken));
+
+      const redirect = () => {
+        navigate('/', { replace: true });
+      };
+
+      setTimeout(() => {
+        redirect();
+      }, 3000);
+  });
+
+  return (
+    <div className="min-h-screen bg-gray-50 flex flex-col justify-center">
       <div className="max-w-md w-full mx-auto">
         <div className="text-center font-medium">something</div>
         <div className="text-3xl font-bold text-gray-900 mt-2 text-center">
@@ -50,11 +65,12 @@ const Login = () => {
               Password
             </label>
             <input
-            {...register("password", 
-                {required: true, 
+              {...register("password", {
+                required: true,
                 minLength: 3,
-                maxLength: 20})}
-                style={{ borderColor:  errors.password ? "red" : "" }}
+                maxLength: 20,
+              })}
+              style={{ borderColor: errors.password ? "red" : "" }}
               type="password"
               name="password"
               className="v-full p-2 border-border-gray-300 rounded mt-1"
@@ -77,7 +93,7 @@ const Login = () => {
         </form>
       </div>
     </div>
-    );
+  );
 };
 
 export default Login;

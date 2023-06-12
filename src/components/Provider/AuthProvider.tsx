@@ -1,9 +1,9 @@
 import { AsyncLocalStorage } from "async_hooks";
 import axios from "axios";
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 // A context object which can share the auth state between components
-const AuthContext = createContext();
+const AuthContext = createContext('');
 
 // Now we initiate the actual provider
 // Which in its turn provide the auth context
