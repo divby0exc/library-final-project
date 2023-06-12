@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import axios from 'axios';
+import { Http2ServerResponse } from "http2";
 
 
 interface FormData {
@@ -9,10 +11,16 @@ interface FormData {
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<FormData>({ mode: "onChange" });
-    const [name, setName] = useState("Kretes");
-  
+    const [name, setName] = useState("");
+
     const onSubmit = handleSubmit(( { username, password }) => {
-      console.log(username, password);
+        const user = {
+          username: username, 
+          password: password
+        }
+      
+      axios.post('http://localhost:8080/auth/login', user)
+      .then(res => console.log(res.status, res.data.accessToken));
     });
 
     return (
@@ -44,7 +52,7 @@ const Login = () => {
             <input
             {...register("password", 
                 {required: true, 
-                minLength: 6,
+                minLength: 3,
                 maxLength: 20})}
                 style={{ borderColor:  errors.password ? "red" : "" }}
               type="password"
