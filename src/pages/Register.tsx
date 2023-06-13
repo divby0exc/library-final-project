@@ -1,26 +1,29 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
-
 interface FormData {
-    username: string
-    password: string
+  username: string;
+  password: string;
 }
 
 const Register = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<FormData>({ mode: "onChange" });
-    const [name, setName] = useState("Kretes");
-  
-    const onSubmit = handleSubmit(( { username, password }) => {
-      console.log(username, password);
-    });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({ mode: "onChange" });
+  const [name, setName] = useState("Kretes");
 
-    return (
-        <div className="min-h-screen bg-gray-50 flex flex-col justify-center">
+  const onSubmit = handleSubmit(({ username, password }) => {
+    console.log(username, password);
+  });
+
+  return (
+    <div className="min-h-screen bg-gray-50 flex flex-col justify-center">
       <div className="max-w-md w-full mx-auto">
-        <div className="text-center font-medium">something</div>
+        <div className="text-center font-medium">divby0exc</div>
         <div className="text-3xl font-bold text-gray-900 mt-2 text-center">
-          another text
+          Register
         </div>
       </div>
       <div className="max-w-md w-full mx-auto mt-4 bg-white p-8 border border-gray-300">
@@ -42,18 +45,19 @@ const Register = () => {
               Password
             </label>
             <input
-            {...register("password", 
-                {required: true, 
+              {...register("password", {
+                required: true,
                 minLength: 6,
-                maxLength: 20})}
-                style={{ borderColor:  errors.password ? "red" : "" }}
+                maxLength: 20,
+              })}
+              style={{ borderColor: errors.password ? "red" : "" }}
               type="password"
               name="password"
               className="v-full p-2 border-border-gray-300 rounded mt-1"
             />
           </div>
           <p>
-            Already have an account? Login {" "}
+            Already have an account? Login{" "}
             <u>
               <b>
                 <a href="#">here!</a>
@@ -69,7 +73,7 @@ const Register = () => {
         </form>
       </div>
     </div>
-    );
+  );
 };
 
 export default Register;

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { useAuth } from "../components/Provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import UserHome from "./UserHome";
 
 interface FormData {
   username: string;
@@ -10,8 +10,7 @@ interface FormData {
 }
 
 const Login = () => {
-  const { setToken } = useAuth();
-  const navigate = useNavigate();
+  const [token, setToken] = useState("");
   const {
     register,
     handleSubmit,
@@ -25,25 +24,27 @@ const Login = () => {
       password: password,
     };
 
-    axios
-      .post("http://localhost:8080/auth/login", user)
-      .then((res) => setToken(res.data.accessToken));
-
-      const redirect = () => {
-        navigate('/', { replace: true });
-      };
-
-      setTimeout(() => {
-        redirect();
-      }, 3000);
+    axios.post("http://localhost:8080/auth/login", user).then((res) => {
+      if (res.status == 403) {
+        return (
+          <div>
+            <h1>Unauthorized</h1>
+          </div>
+        );
+      }
+      localStorage.setItem("token", res.data.accessToken);
+      console.log(res.status);
+      console.log(res.data.accessToken);
+      return <UserHome />;
+    });
   });
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center">
       <div className="max-w-md w-full mx-auto">
-        <div className="text-center font-medium">something</div>
+        <div className="text-center font-medium">divby0exc</div>
         <div className="text-3xl font-bold text-gray-900 mt-2 text-center">
-          another text
+          Login
         </div>
       </div>
       <div className="max-w-md w-full mx-auto mt-4 bg-white p-8 border border-gray-300">

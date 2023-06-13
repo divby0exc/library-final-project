@@ -1,4 +1,9 @@
 import React from "react";
+interface IBooks {
+  title: string;
+  author: string;
+  quantity: number;
+}
 
 const BookTitle = () => {
     return (
