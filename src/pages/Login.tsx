@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import UserHome from "./UserHome";
+import { useNavigate } from "react-router-dom";
+import AuthContext, { useAuth } from "../components/provider/AuthProvider";
+import GuestHome from "./GuestHome";
 
 interface FormData {
   username: string;
@@ -10,7 +12,9 @@ interface FormData {
 }
 
 const Login = () => {
-  const [token, setToken] = useState("");
+  const { setToken } = useAuth();
+  const navigate = useNavigate();
+  const [success, setSuccess] = useState(false);
   const {
     register,
     handleSubmit,
@@ -23,21 +27,30 @@ const Login = () => {
       username: username,
       password: password,
     };
+    res(user);
 
-    axios.post("http://localhost:8080/auth/login", user).then((res) => {
-      if (res.status == 403) {
-        return (
-          <div>
-            <h1>Unauthorized</h1>
-          </div>
-        );
-      }
-      localStorage.setItem("token", res.data.accessToken);
-      console.log(res.status);
-      console.log(res.data.accessToken);
-      return <UserHome />;
-    });
+    navigate("/", { replace: true });
+
   });
+
+  const res = async (user: FormData) => {
+    try {
+      const data = await axios
+        .post("http://localhost:8080/auth/login", user)
+        .then((res) => {
+          localStorage.setItem("token", res.data.accessToken);
+          setToken(res.data.accessToken);
+          console.log(res.status);
+          console.log(localStorage.getItem("token"));
+          setSuccess(true);
+        });
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setSuccess(false);
+    }
+  };
+
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center">

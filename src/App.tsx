@@ -1,14 +1,12 @@
-import React from "react";
-import GuestHome from "./pages/GuestHome";
+import AuthProvider from "./components/provider/AuthProvider";
+import Routes from "./components/routes";
 
-class App extends React.Component {
-    componentDidMount(): void {
-        
-    }
-  render(): React.ReactNode {
-      
-      return(<div></div>);
-  }
+function App() {
+  return (
+    <AuthProvider>
+      <Routes />
+    </AuthProvider>
+  );
 }
 
 export default App;
