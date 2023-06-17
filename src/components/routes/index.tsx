@@ -12,7 +12,6 @@ import AdminHomeBooks from "../../pages/AdminHomeBooks";
 const Routes = () => {
   const { token } = useAuth();
 
-  // Define public routes accessible to all users
   const routesForGuests = [
     {
       path: "/login",
@@ -28,7 +27,7 @@ const Routes = () => {
     },
   ];
 
-  // Define routes accessible only to authenticated users
+  
   const routesForUsers = [
     {
       path: "/",
@@ -46,7 +45,7 @@ const Routes = () => {
     },
   ];
 
-  // Define routes accessible only to non-authenticated users
+  
   const routesForAdmins = [
     {
       path: "/",
