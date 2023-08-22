@@ -32,7 +32,7 @@ const Login = () => {
     navigate("/", { replace: true });
   });
 
-  const res = async (user) => {
+const res = async (user) => {
     try {
       const data = await axios
         .post("http://localhost:8080/auth/login", user)
