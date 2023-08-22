@@ -33,7 +33,7 @@ class GuestHome extends React.Component {
 
   onSearchChange = (event: HTMLInputElement) => {
     this.setState({ searchField: event.value });
-  }
+  };
 
   render() {
     return (

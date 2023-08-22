@@ -1,18 +1,17 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { ObjectLiteralExpression } from "typescript";
 
 const AuthContext = createContext("");
-type Props = {
-  children: string | JSX.Element | JSX.Element[];
-};
+// type Props = {
+//   children: string | JSX.Element | JSX.Element[];
+// };
 
-const AuthProvider = ({ children }: Props) => {
+const AuthProvider = ({ children }) => {
   // State to hold the authentication token
-  const [token, setToken_] = useState<string | undefined | null>();
+  const [token, setToken_] = useState();
 
   // Function to set the authentication token
-  const setToken = (newToken: string | undefined | null): void => {
+  const setToken = (newToken) => {
     setToken_(newToken);
   };
 

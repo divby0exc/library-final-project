@@ -1,5 +1,5 @@
 import AuthProvider from "./components/provider/AuthProvider";
-import Routes from "./components/routes";
+import Routes from "./components/routes/index.jsx";
 
 function App() {
   return (

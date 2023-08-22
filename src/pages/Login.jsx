@@ -6,10 +6,10 @@ import { useNavigate } from "react-router-dom";
 import AuthContext, { useAuth } from "../components/provider/AuthProvider";
 import GuestHome from "./GuestHome";
 
-interface FormData {
-  username: string;
-  password: string;
-}
+// interface FormData {
+//   username: string;
+//   password: string;
+// }
 
 const Login = () => {
   const { setToken } = useAuth();
@@ -19,7 +19,7 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>({ mode: "onChange" });
+  } = useForm({ mode: "onChange" });
   const [name, setName] = useState("");
 
   const onSubmit = handleSubmit(({ username, password }) => {
@@ -30,10 +30,9 @@ const Login = () => {
     res(user);
 
     navigate("/", { replace: true });
-
   });
 
-  const res = async (user: FormData) => {
+  const res = async (user) => {
     try {
       const data = await axios
         .post("http://localhost:8080/auth/login", user)
@@ -50,7 +49,6 @@ const Login = () => {
       setSuccess(false);
     }
   };
-
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center">

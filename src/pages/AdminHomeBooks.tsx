@@ -6,7 +6,7 @@ import WhoAmI from "../components/Shared/WhoAmI";
 import OrderColumn from "../components/Shared/OrderColumn";
 import AddButton from "../components/AdminComponents/AddButton";
 import BooksActionColumn from "../components/AdminComponents/BooksActionColumn";
-import { useState } from 'react';
+import { useState } from "react";
 import AdminHomeUsers from "./AdminHomeUsers";
 
 const AdminHome = () => {
@@ -30,7 +30,12 @@ const AdminHome = () => {
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
           Books
         </button>
-        <button onClick={() => {return(<AdminHomeUsers />)}} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <button
+          onClick={() => {
+            return <AdminHomeUsers />;
+          }}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
           Username
         </button>
       </div>

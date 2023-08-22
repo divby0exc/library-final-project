@@ -5,7 +5,6 @@ import Login from "../../pages/Login";
 import GuestHome from "../../pages/GuestHome";
 import Register from "../../pages/Register";
 import UserHome from "../../pages/UserHome";
-import AdminHome from "../../pages/AdminHomeBooks";
 import AdminHomeUsers from "../../pages/AdminHomeUsers";
 import AdminHomeBooks from "../../pages/AdminHomeBooks";
 
@@ -27,7 +26,6 @@ const Routes = () => {
     },
   ];
 
-  
   const routesForUsers = [
     {
       path: "/",
@@ -45,7 +43,6 @@ const Routes = () => {
     },
   ];
 
-  
   const routesForAdmins = [
     {
       path: "/",
@@ -75,7 +72,7 @@ const Routes = () => {
   const router = createBrowserRouter([
     ...routesForGuests,
     ...(!token ? routesForUsers : []),
-    ...(!token ? routesForAdmins : [])
+    ...(!token ? routesForAdmins : []),
   ]);
 
   // Provide the router configuration using RouterProvider
