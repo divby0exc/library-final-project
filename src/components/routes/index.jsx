@@ -1,12 +1,13 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { useAuth } from "../provider/AuthProvider";
-import { ProtectedRoute } from "./ProtectedRoute";
 import Login from "../../pages/Login";
 import GuestHome from "../../pages/GuestHome";
 import Register from "../../pages/Register";
 import UserHome from "../../pages/UserHome";
 import AdminHomeUsers from "../../pages/AdminHomeUsers";
 import AdminHomeBooks from "../../pages/AdminHomeBooks";
+
+// Komponenter som appen navigerar till vid olika situationer
 
 const Routes = () => {
   const { token } = useAuth();
@@ -24,55 +25,23 @@ const Routes = () => {
       path: "/register",
       element: <Register />,
     },
-  ];
-
-  const routesForUsers = [
     {
-      path: "/",
-      element: <ProtectedRoute />, // Wrap the component in ProtectedRoute
-      children: [
-        {
-          path: "/user-home",
-          element: <UserHome />,
-        },
-        {
-          path: "/logout",
-          element: <Login />,
-        },
-      ],
+      path: "/User",
+      element: <UserHome />, // Wrap the component in ProtectedRoute
     },
-  ];
-
-  const routesForAdmins = [
     {
-      path: "/",
-      element: <ProtectedRoute />, // Wrap the component in ProtectedRoute
-      children: [
-        {
-          path: "/admin-home",
-          element: <div>User Home Page</div>,
-        },
-        {
-          path: "/logout",
-          element: <div>Logout</div>,
-        },
-        {
-          path: "/admin-home-books",
-          element: <AdminHomeBooks />,
-        },
-        {
-          path: "/admin-home-users",
-          element: <AdminHomeUsers />,
-        },
-      ],
+      path: "/Admin",
+      element: <AdminHomeBooks />, // Wrap the component in ProtectedRoute
     },
+    {
+      path: "/Guest",
+      element: <GuestHome />,
+    }
   ];
 
   // Combine and conditionally include routes based on authentication status
   const router = createBrowserRouter([
     ...routesForGuests,
-    ...(!token ? routesForUsers : []),
-    ...(!token ? routesForAdmins : []),
   ]);
 
   // Provide the router configuration using RouterProvider

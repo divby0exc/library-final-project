@@ -7,6 +7,9 @@ import Role from "../components/AdminComponents/UsersView/RoleCol";
 import { useState } from "react";
 import AdminHomeBooks from "./AdminHomeBooks";
 
+// Sharing columns so its dependant on them working for a full view
+
+
 const AdminHome = () => {
   const [view, setView] = useState(false);
 

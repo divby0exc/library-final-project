@@ -1,6 +1,8 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
+// En wrapper komponent som wrapar routing för säkerhet, chain va den hette
+
 const AuthContext = createContext("");
 // type Props = {
 //   children: string | JSX.Element | JSX.Element[];

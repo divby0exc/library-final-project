@@ -8,11 +8,15 @@ import AddButton from "../components/AdminComponents/AddButton";
 import BooksActionColumn from "../components/AdminComponents/BooksActionColumn";
 import { useState } from "react";
 import AdminHomeUsers from "./AdminHomeUsers";
+import BookList from "../components/Shared/BookList";
+
+// Sharing columns so its dependant on them working for a full view
 
 const AdminHome = () => {
   const [view, setView] = useState(false);
-
+  console.log(BookList)
   return (
+     
     <div>
       <div className="container md:mx-auto bg-gray-200 rounded-xl shadow border p-8 m-10">
         <WhoAmI />

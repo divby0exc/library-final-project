@@ -4,13 +4,10 @@ import BookAuthor from "../components/Shared/BookAuthor";
 import SearchQuery from "../components/Shared/SearchQuery";
 import Availability from "../components/Shared/Availability";
 import WhoAmI from "../components/Shared/WhoAmI";
-import axios from "axios";
+import BookList from "../components/Shared/BookList";
 
-interface IBooks {
-  title: string;
-  author: string;
-  quantity: number;
-}
+// Sharing columns so its dependant on them working for a full view
+
 class GuestHome extends React.Component {
   constructor(props: any) {
     super(props);
@@ -21,14 +18,7 @@ class GuestHome extends React.Component {
   }
 
   componentDidMount(): void {
-    axios
-      .get("http://localhost:8080/library/books")
-      .then((res) => res.data.books)
-      .then((data: IBooks) => {
-        this.setState({
-          bookArr: data,
-        });
-      });
+    
   }
 
   onSearchChange = (event: HTMLInputElement) => {

@@ -5,11 +5,14 @@ import UserHome from "./UserHome";
 import { useNavigate } from "react-router-dom";
 import AuthContext, { useAuth } from "../components/provider/AuthProvider";
 import GuestHome from "./GuestHome";
+import Decoder from "../components/Shared/Decoder";
 
 // interface FormData {
 //   username: string;
 //   password: string;
 // }
+
+// Login förlitar sig på jwt token för att komma in om du inte browsar som gäst
 
 const Login = () => {
   const { setToken } = useAuth();
@@ -29,10 +32,21 @@ const Login = () => {
     };
     res(user);
 
-    navigate("/", { replace: true });
+    // navigate("/", { replace: true });
   });
 
-const res = async (user) => {
+  const guestHandler = () => {
+    setSuccess(true);
+    navigate("/Guest", { replace: true });
+  }
+
+  console.log(success);
+  // useEffect(() => {
+  //   if (success) {
+  //   }
+  // });
+
+  const res = async (user) => {
     try {
       const data = await axios
         .post("http://localhost:8080/auth/login", user)
@@ -42,6 +56,17 @@ const res = async (user) => {
           console.log(res.status);
           console.log(localStorage.getItem("token"));
           setSuccess(true);
+          let role = Decoder.getRole();
+
+          console.log(role);
+
+          if (role == "ADMIN") {
+            navigate("/Admin", { replace: true });
+          } else if (role == "USER") {
+            navigate("/User", { replace: true });
+          } else {
+            navigate("/Guest", { replace: true });
+          }
         });
     } catch (err) {
       console.log(err);
@@ -93,6 +118,14 @@ const res = async (user) => {
             <u>
               <b>
                 <a href="#">here!</a>
+              </b>
+            </u>
+          </p>
+          <p>
+            Browse as guest{" "}
+            <u>
+              <b>
+                <a onClick={guestHandler}>Here</a>
               </b>
             </u>
           </p>
