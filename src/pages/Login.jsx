@@ -36,7 +36,6 @@ const Login = () => {
   });
 
   const guestHandler = () => {
-    setSuccess(true);
     navigate("/Guest", { replace: true });
   }
 
@@ -72,6 +71,7 @@ const Login = () => {
       console.log(err);
     } finally {
       setSuccess(false);
+      navigate("/Guest", { replace: true });
     }
   };
 

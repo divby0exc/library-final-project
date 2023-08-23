@@ -18,10 +18,6 @@ const Routes = () => {
       element: <Login />,
     },
     {
-      path: "/home-guest",
-      element: <GuestHome />,
-    },
-    {
       path: "/register",
       element: <Register />,
     },
