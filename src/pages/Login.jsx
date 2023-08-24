@@ -15,6 +15,7 @@ import Decoder from "../components/Shared/Decoder";
 // Login förlitar sig på jwt token för att komma in om du inte browsar som gäst
 
 const Login = () => {
+  const [guest, setGuest] = useState(false);
   const { setToken } = useAuth();
   const navigate = useNavigate();
   const [success, setSuccess] = useState(false);
@@ -36,8 +37,8 @@ const Login = () => {
   });
 
   const guestHandler = () => {
-    navigate("/Guest", { replace: true });
-  }
+    setGuest(true);
+  };
 
   console.log(success);
   // useEffect(() => {
@@ -63,15 +64,12 @@ const Login = () => {
             navigate("/Admin", { replace: true });
           } else if (role == "USER") {
             navigate("/User", { replace: true });
-          } else {
-            navigate("/Guest", { replace: true });
           }
         });
     } catch (err) {
       console.log(err);
     } finally {
       setSuccess(false);
-      navigate("/Guest", { replace: true });
     }
   };
 
@@ -117,7 +115,7 @@ const Login = () => {
             No account? Sign up{" "}
             <u>
               <b>
-                <a href="#">here!</a>
+                <a href="/register">here!</a>
               </b>
             </u>
           </p>
@@ -125,7 +123,7 @@ const Login = () => {
             Browse as guest{" "}
             <u>
               <b>
-                <a onClick={guestHandler}>Here</a>
+                <a href="Guest">Here</a>
               </b>
             </u>
           </p>

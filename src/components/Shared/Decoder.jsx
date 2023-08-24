@@ -3,15 +3,19 @@
 
 function getLocalJWTData() {
   const localJWTToken = localStorage.getItem("token");
-  const tokenParts = localJWTToken.split(".");
-  const payload = tokenParts[1];
-
-  let payloadData = window.atob(payload);
-  return JSON.parse(payloadData);
+  if(localJWTToken) {
+    const tokenParts = localJWTToken.split(".");
+    const payload = tokenParts[1];
+  
+    let payloadData = window.atob(payload);
+    return JSON.parse(payloadData);
+  } else {
+    return {"role":"Guest"}
+  }
 }
 
 function getRole() {
-  return getLocalJWTData().role;
+    return getLocalJWTData().role;
 }
 
 export default {getLocalJWTData, getRole};
